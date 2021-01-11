@@ -13,7 +13,7 @@ basename=pihole
 piholeDir=/etc/"${basename}"
 gravityDBfile="${piholeDir}/gravity.db"
 
-reload=false
+canReload=true
 addmode=true
 verbose=true
 wildcard=false
@@ -25,6 +25,7 @@ typeId=""
 comment=""
 declare -i domaincount
 domaincount=0
+reload=false
 
 colfile="/opt/pihole/COL_TABLE"
 source ${colfile}
@@ -258,7 +259,7 @@ while (( "$#" )); do
         "--white-wild" | "white-wild" ) typeId=2; wildcard=true;;
         "--wild" | "wildcard" ) typeId=3; wildcard=true;;
         "--regex" | "regex"   ) typeId=3;;
-        "-nr"| "--noreload"  ) reload=false;;
+        "-nr"| "--noreload"  ) canReload=false;;
         "-d" | "--delmode"   ) addmode=false;;
         "-q" | "--quiet"     ) verbose=false;;
         "-h" | "--help"      ) helpFunc;;
@@ -284,6 +285,6 @@ if $web; then
 echo "DONE"
 fi
 
-if [[ "${reload}" != false ]]; then
+if [[ ${reload} == true ]] && [[ ${canReload} == true ]]; then
     pihole restartdns reload-lists
 fi
