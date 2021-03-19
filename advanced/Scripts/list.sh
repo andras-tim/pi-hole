@@ -13,7 +13,7 @@ basename=pihole
 piholeDir=/etc/"${basename}"
 gravityDBfile="${piholeDir}/gravity.db"
 
-canReload=true
+noReloadRequested=false
 addmode=true
 verbose=true
 wildcard=false
