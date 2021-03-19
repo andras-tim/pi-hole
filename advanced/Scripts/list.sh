@@ -259,7 +259,7 @@ while (( "$#" )); do
         "--white-wild" | "white-wild" ) typeId=2; wildcard=true;;
         "--wild" | "wildcard" ) typeId=3; wildcard=true;;
         "--regex" | "regex"   ) typeId=3;;
-        "-nr"| "--noreload"  ) canReload=false;;
+        "-nr"| "--noreload"  ) noReloadRequested=true;;
         "-d" | "--delmode"   ) addmode=false;;
         "-q" | "--quiet"     ) verbose=false;;
         "-h" | "--help"      ) helpFunc;;
